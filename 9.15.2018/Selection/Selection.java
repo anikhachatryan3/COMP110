@@ -82,6 +82,16 @@ class Selection {
       }
       return result;
    }
+      
+      public static void compareStrings(String str1, String str2){
+         
+      if(str1.equals(str2)) {
+         System.out.println("The strings are equal to each other.");
+      }
+      else {
+         System.out.println("The strings are not equal to each other.");
+      }
+   }
    
    
    //Selection F
@@ -172,6 +182,15 @@ class Selection {
       string2 = "";
       concat = selectionE(string1, string2);
       System.out.println(string1 + " and " + string2 + " comparison: " + concat);
+      
+      
+      String str1 = "sun";
+      String str2 = "sun";
+      Selection.compareStrings(str1, str2);
+      
+      str1 = "moon";
+      str2 = "sun";
+      Selection.compareStrings(str1, str2);
       
       //Selection Problem F
       int age = 1;

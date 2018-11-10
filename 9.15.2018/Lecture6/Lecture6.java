@@ -9,7 +9,7 @@ class Lecture6 {
       
       //call method
       double r = 2.367;
-      double results = getCircumferenceOfACircle(2.367);
+      double results = getCircumferenceOfACircle(r);
       System.out.println("Radius = " + r + " -- Circumference = " + results);
       
    }
