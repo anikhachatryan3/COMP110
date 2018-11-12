@@ -4,9 +4,7 @@
 //Purpose:
 
 public class Dog {
-   
-   //Maltese, Yorkie
-   
+      
    private String name; 
    private final int speed = 5; // default speed in mph
    private final String size = "Normal"; // default size
