@@ -17,6 +17,10 @@ class Stack {
       
    }
    
+   public int getSize() {
+      return size;
+   }
+   
    public boolean isEmpty() {
       return (top == -1);
    }
@@ -45,9 +49,31 @@ class Stack {
       }
    }
    
+   public void reset() {
+      
+      for(int i = 0; i < getSize(); i++) {
+         
+         stack[i] = "";
+         
+      }
+   }
+   
+   public void print() {
+      
+      for(int i = 0; i < getSize(); i++) {
+         
+         System.out.println(stack[i]);
+         
+      }
+      
+   }
+   
    public void display() {
-      for( int i = 0; i < stack.size; i++ ){
-         System.print(stack[i] + " ");
+      
+      for( int i = 0; i < getSize(); i++ ){
+         
+         System.out.print(stack[i] + " ");
+         
       }
    }
 }

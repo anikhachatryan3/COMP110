@@ -25,6 +25,12 @@ class Profile {
       
    }
    
+   public void removeLastProfile() {
+      
+      
+      
+   }
+   
    public void setStatus(String status) {
       u.setStatus(status);
    }

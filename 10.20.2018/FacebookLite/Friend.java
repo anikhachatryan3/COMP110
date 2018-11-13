@@ -15,6 +15,10 @@ class Friend implements IDisplayable {
       
    }
    
+   public void toggleVisibility() {
+      isFriendsVisible = !isFriendsVisible;
+   }
+   
    public void addFriend(String name) {
       friends.push(name);
    }
@@ -27,10 +31,18 @@ class Friend implements IDisplayable {
       friends.reset();
    }
    
+   /*public void reset() {
+      friends.reset();
+   }*/
+   
    public void display() {
-      if( isFriendsVisible ){
+      
+      if(isFriendsVisible) {
+         
          friends.display();
          System.out.println("");
+         
       }
+      
    }
 }

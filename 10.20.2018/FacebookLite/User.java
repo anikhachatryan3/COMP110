@@ -17,10 +17,11 @@ public class User extends Person implements IDisplayable {
    }
    
    public void display() {
-      System.out.println(f, l, status);
+      System.out.println("Name: " + getFName() + " " + getLName());
+      System.out.println("Status: " + status);
       
       if(isAgeVisible == true) {
-         System.out.println(a);
+         System.out.println("Age: " + getAge());
       }
    }
       
@@ -28,7 +29,12 @@ public class User extends Person implements IDisplayable {
       isAgeVisible = !isAgeVisible;
    }
    
+   public String getStatus() {
+      return status;
+   }
+   
    public void setStatus(String status){
       this.status = status;
+   }
    
 }

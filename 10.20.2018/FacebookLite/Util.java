@@ -10,22 +10,28 @@ public class Util {
    }
    
    public static void reset(String[] s) {
-      //loop
-      //initialize all elements to "" (blank)
+      
+      for(int i = 0; i < s.length; i++) {
+         
+         s[i] = "";
+         
+      }
+      
    }
    
-   public static void print(Stack s) {
-      //loop
-      //print all elements
+   public static void print(String[] s) {
+      
+      for(int i = 0; i < s.length; i++) {
+         
+         System.out.println(s[i]);
+         
+      }
+      
    }
    
-   public static void reset(Stack s) {
+   /*public static void reset(String[] s) {
       Util.reset(Stack);
       top = -1;          //not sure of this (what is written inside)
-   }
-//
-//   public static void print(Stack s) {
-//      ;
-//   }
+   }*/
 
 }
