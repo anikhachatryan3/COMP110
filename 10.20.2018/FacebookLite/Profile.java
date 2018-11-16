@@ -36,12 +36,36 @@ public class Profile {
       f.removeFriend();
    }
    
+   public void removeAllFriends() {
+      f.reset();
+   }
+   
    public boolean isFriendsEmpty() {
       return f.isEmpty();
    }
    
    public boolean isFriendsFull() {
       return f.isFull();
+   }
+   
+   public void addPost(String post) {
+      p.addPost(post);
+   }
+   
+   public void removeLastPost() {
+      p.removePost();
+   }
+   
+   public void removeAllPosts() {
+      p.reset();
+   }
+   
+   public boolean isPostsEmpty() {
+      return p.isEmpty();
+   }
+   
+   public boolean isPostsFull() {
+      return p.isFull();
    }
    
 }

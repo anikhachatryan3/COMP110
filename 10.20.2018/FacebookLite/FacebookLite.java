@@ -30,7 +30,7 @@ public class FacebookLite {
             nop++;
             idx = nop - 1;
             profiles[idx] = p;
-            Util.print("Profile created!\n");
+            Util.print("\nProfile created!\n");
            
         }
         else {
@@ -108,6 +108,7 @@ public class FacebookLite {
          
          Util.print("\nEnter the name of the person you want to add: ");
          String name = sc.nextLine();
+         
          if(name.length() != 0) {
             
             profiles[idx].addFriend(name);
@@ -134,9 +135,80 @@ public class FacebookLite {
          profiles[idx].removeLastFriend();
          Util.print("\nFriend removed.\n");
          
-      } else {
+      }
+      else {
          
-         Util.print("\nYou do not have any friends.\n");
+         Util.print("\nYou do not have any friends added.\n");
+      }
+      
+   }
+   
+   //case 7
+   public void removeAllFriends() {
+      
+      if(profiles[idx].isFriendsEmpty() == false) {
+         
+         profiles[idx].removeAllFriends();
+         Util.print("\nAll friends removed.\n");
+         
+      }
+      else {
+         Util.print("\nYou do not have any friends added.\n");
+      }
+      
+   }
+   
+   //case 8
+   public void addPost() {
+      
+      if(profiles[idx].isPostsFull() == false) {
+         
+         Util.print("What would you like to post? ");
+         String post = sc.nextLine();
+         
+         if(post.length() != 0) {
+            
+            profiles[idx].addPost(post);
+            Util.print("\nYour post has been posted!\n");
+            
+         }
+         else {
+            Util.print("\nMust enter something to post.\n");
+         }
+         
+      }
+      else {
+         Util.print("No room to add new post.");
+      }
+      
+   }
+   
+   //case 9
+   public void removeLastPost() {
+      
+      if(profiles[idx].isPostsEmpty() == false) {
+         
+         profiles[idx].removeLastPost();
+         Util.print("\nPost removed.\n");
+         
+      }
+      else {
+         Util.print("\nYou do not have any posts to remove.\n");
+      }
+      
+   }
+   
+   //case 10
+   public void removeAllPosts() {
+      
+      if(profiles[idx].isPostsEmpty() == false) {
+         
+         profiles[idx].removeAllPosts();
+         Util.print("\nAll posts removed.\n");
+         
+      }
+      else {
+         Util.print("\nYou do not have any posts to remove.\n");
       }
       
    }
@@ -225,15 +297,44 @@ public class FacebookLite {
                      }
                      break;
                    case 6:  //remove last friend
-                     fbl.removeLastFriend();
+                     if(fbl.nop == 0) {
+                        Util.print("\nPlease create a profile and add a friend to do this.\n");
+                     }
+                     else {
+                        fbl.removeLastFriend();
+                     }
                      break;
                    case 7:  //remove all friends
+                     if(fbl.nop == 0) {
+                        Util.print("\nPlease create a profile and add friends to do this.\n");
+                     }
+                     else {
+                        fbl.removeAllFriends();
+                     }
                      break;
                    case 8:  //add post
+                     if(fbl.nop == 0) {
+                        Util.print("\nPlease create a profile to add a post.\n");
+                     }
+                     else {
+                        fbl.addPost();
+                     }
                      break;
                    case 9:  //remove last post
+                     if(fbl.nop == 0) {
+                        Util.print("\nPlease create a profile and add a post to do this.\n");
+                     }
+                     else {
+                        fbl.removeLastPost();
+                     }
                      break;
                    case 10: //remove all posts
+                     if(fbl.nop == 0) {
+                        Util.print("\nPlease create a profile and add posts to do this.\n");
+                     }
+                     else {
+                        fbl.removeAllPosts();
+                     }
                      break;
                    case 11: //toggle age
                      break;

@@ -23,4 +23,21 @@ public class Post implements IDisplayable {
     public boolean isEmpty() {
         return posts.isEmpty();
     }
+   
+   public boolean isFull() {
+      return posts.isFull();
+   }
+   
+   public void addPost(String post) {
+      posts.push(post);
+   }
+   
+   public void removePost() {
+      posts.pop();
+   }
+   
+   public void reset() {
+      posts.reset();
+   }
+   
 }
