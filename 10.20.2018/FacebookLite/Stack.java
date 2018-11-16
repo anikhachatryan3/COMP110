@@ -41,9 +41,10 @@ public class Stack {
         top=-1;
     }
     public void print() {
-        
-        for(int i=0; i<getSize(); i++) {
+        int i = 0;
+        while(stack[i] != null) {
             Util.print(stack[i]);
+            i++;
         }
     }
 }

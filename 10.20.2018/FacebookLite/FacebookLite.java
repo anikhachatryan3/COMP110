@@ -63,11 +63,16 @@ public class FacebookLite {
       else if(nop == 2) {
          
          if(idx == 0) {
+            
             idx = 1;
+            
          }
          else {
+            
             idx = 0;
+            
          }
+         
          Util.print("\nProfile switched.\n");
          
       }
@@ -76,9 +81,11 @@ public class FacebookLite {
          Util.print("Which profile do you want to switch to? ex. 1, 2...");
          opt = Integer.parseInt(sc.nextLine());
            if(opt >= 1 && opt <= nop) {
+              
               idx = opt - 1;
               Util.print("\nProfile switched.\n");
               printProfile();
+              
            }
            else {
               Util.print("\nProfile does not exist.\n");
@@ -89,12 +96,50 @@ public class FacebookLite {
    
    //case 4
    public void printProfile() {
-         (profiles[idx]).printProfile();
+      
+      (profiles[idx]).printProfile();
 
    }
    
    //case 5
+   public void addFriend() {
+      
+      if(profiles[idx].isFriendsFull() == false) {
+         
+         Util.print("\nEnter the name of the person you want to add: ");
+         String name = sc.nextLine();
+         if(name.length() != 0) {
+            
+            profiles[idx].addFriend(name);
+            Util.print("\nFriend added!\n");
+            
+         }
+         else {
+            Util.print("\nMust enter a name.\n");
+         }
+         
+      }
+      else {
+         
+         Util.print("\nNo room to add friend.\n");
+         
+      }
+   }
    
+   //case 6
+   public void removeLastFriend() {
+      
+      if(profiles[idx].isFriendsEmpty() == false) {
+         
+         profiles[idx].removeLastFriend();
+         Util.print("\nFriend removed.\n");
+         
+      } else {
+         
+         Util.print("\nYou do not have any friends.\n");
+      }
+      
+   }
    
    //case 14
    public void changeStatus() {
@@ -173,9 +218,14 @@ public class FacebookLite {
                      }
                      break;
                    case 5:  //add friend
-                     
+                     if(fbl.nop == 0) {
+                        Util.print("\nPlease create a profile.\n");
+                     } else {
+                        fbl.addFriend();
+                     }
                      break;
                    case 6:  //remove last friend
+                     fbl.removeLastFriend();
                      break;
                    case 7:  //remove all friends
                      break;
