@@ -23,7 +23,6 @@ class Driver {
       System.out.println(result + " degrees Celsius");
       
       
-      
       //Celsius to Fahrenheit
       double c = 32;
       double result1 = algo.C2F(c);
@@ -227,27 +226,214 @@ class Driver {
       
       
       //First repeating char in String
+      String str = "tomatosauce";
+      algo.firstRepeatingChar(str);
+      
+      str = "carousel";
+      algo.firstRepeatingChar(str);
+      
+      str = "science";
+      algo.firstRepeatingChar(str);
+      
       
       //Last repeating char in String
+      str = "randomness";
+      algo.lastRepeatingChar(str);
+      
+      str = "candy";
+      algo.lastRepeatingChar(str);
+      
+      str = "popcorn";
+      algo.lastRepeatingChar(str);
+      
       
       //First non-repeating char in String
+      str = "spam";
+      algo.nonRepeatChar(str);
+      
+      str = "good";
+      algo.nonRepeatChar(str);
+      
+      str = "marshmellow";
+      algo.nonRepeatChar(str);
+      
       
       //Count digits in String[]
+      String[] digitsArray = {"21", "242", "abc", "hello", "57", "world"};
+      int result10 = algo.countDigits(digitsArray);
+      System.out.println("How many digits in array? " + result10);
+      
+      digitsArray = new String[] {"293", "cake", "computer", "12", "homework", "for", "7483", "hi"};
+      result10 = algo.countDigits(digitsArray);
+      System.out.println("How many digits in array? " + result10);
+      
+      digitsArray = new String[] {"cookie", "board", "class", "keyboard", "typing"};
+      result10 = algo.countDigits(digitsArray);
+      System.out.println("How many digits in array? " + result10);
+      
       
       //Count Even Numbers in String[]
+      String[] evenDigitsArray = {"12", "nothing", "79", "word", "26", "000"};
+      int result11 = algo.countEven(evenDigitsArray);
+      System.out.println("Number of even digits in array: " + result11);
+      
+      evenDigitsArray = new String[] {"13", "15", "17", "19", "empty"};
+      result11 = algo.countEven(evenDigitsArray);
+      System.out.println("Number of even digits in array: " + result11);
+      
+      evenDigitsArray = new String[] {"13", "42", "1094", "376", "120", "38"};
+      result11 = algo.countEven(evenDigitsArray);
+      System.out.println("Number of even digits in array: " + result11);
+      
       
       //Reverse Array
+      int[] reverseNum = new int[5];
+      reverseNum[0] = 0;
+      reverseNum[1] = 1;
+      reverseNum[2] = 2;
+      reverseNum[3] = 3;
+      reverseNum[4] = 4;
+      algo.reverseArray(reverseNum);
+      System.out.println("Array reversed is: ");
+      algo.printInt(reverseNum);
+      
+      reverseNum = new int[6];
+      reverseNum[0] = 24;
+      reverseNum[1] = 26;
+      reverseNum[2] = 28;
+      reverseNum[3] = 30;
+      reverseNum[4] = 32;
+      reverseNum[5] = 34;
+      algo.reverseArray(reverseNum);
+      System.out.println("Array reversed is: ");
+      algo.printInt(reverseNum);
+
+      reverseNum = new int[7];
+      reverseNum[0] = 0;
+      reverseNum[1] = -2;
+      reverseNum[2] = -4;
+      reverseNum[3] = -6;
+      reverseNum[4] = -8;
+      reverseNum[5] = -10;
+      reverseNum[6] = -12;
+      algo.reverseArray(reverseNum);
+      System.out.println("Array reversed is: ");
+      algo.printInt(reverseNum);
+      
       
       //Reverse String
+      String[] reverseStr = {"code", "typing", "am", "I", "hello"};
+      algo.reverseStrArray(reverseStr);
+      System.out.println("String reversed is: ");
+      algo.printStr(reverseStr);
+      
+      reverseStr = new String[] {"moon", "the", "over", "jumped", "cow", "the"};
+      algo.reverseStrArray(reverseStr);
+      System.out.println("String reversed is: ");
+      algo.printStr(reverseStr);
+      
+      reverseStr = new String[] {"am", "I", "Yoda", "like", "talking"};
+      algo.reverseStrArray(reverseStr);
+      System.out.println("String reversed is: ");
+      algo.printStr(reverseStr);
+      
       
       //String split using any delemiter(String, delim)(returns a String[])
+      String t = "I like to eat cookies";
+      String[] tArray = t.split(" ");
+      System.out.println("String split is: ");
+      algo.splitStr(tArray);
+      
+      t = "11/10/2018";
+      tArray = t.split("/");
+      System.out.println("String split is: ");
+      algo.splitStr(tArray);
+      
+      t = "This\\string\\is\\now\\split";
+      tArray = t.split("\\\\");
+      System.out.println("String split is: ");
+      algo.splitStr(tArray);
+      
       
       //Bubble sort int[]
+      int[] arr = new int[5];
+      arr[0] = 12;
+      arr[1] = 56;
+      arr[2] = 34;
+      arr[3] = 90;
+      arr[4] = 78;
+      System.out.println("Before sort: ");
+      algo.print(arr);
+      algo.sortInt(arr);
+      System.out.println("Int sorted is: ");
+      algo.print(arr);
+      System.out.println("--------------------");
+      
+      arr = new int[6];
+      arr[0] = 60;
+      arr[1] = 0;
+      arr[2] = 20;
+      arr[3] = 80;
+      arr[4] = 40;
+      arr[5] = 100;
+      System.out.println("Before sort: ");
+      algo.print(arr);
+      algo.sortInt(arr);
+      System.out.println("Int sorted is: ");
+      algo.print(arr);
+      System.out.println("--------------------");
+      
+      arr = new int[7];
+      arr[0] = 50;
+      arr[1] = 10;
+      arr[2] = 70;
+      arr[3] = 30;
+      arr[4] = 60;
+      arr[5] = 20;
+      arr[6] = 40;
+      System.out.println("Before sort: ");
+      algo.print(arr);
+      algo.sortInt(arr);
+      System.out.println("Int sorted is: ");
+      algo.print(arr);
+      System.out.println("--------------------");
+      
       
       //Bubble sort String[]
+      String[] sArray = {"a", "c", "b", "e", "d"};
+      System.out.println("Before sort: ");
+      algo.printStr(sArray);
+      algo.sortStr(sArray);
+      System.out.println("String sorted is: ");
+      algo.printStr(sArray);
+      
+      sArray = new String[] {"y", "x", "z", "w", "u", "v"};
+      System.out.println("Before sort: ");
+      algo.printStr(sArray);
+      algo.sortStr(sArray);
+      System.out.println("String sorted is: ");
+      algo.printStr(sArray);
+      
+      sArray = new String[] {"apple", "cookie", "egg", "dish", "banana"};
+      System.out.println("Before sort: ");
+      algo.printStr(sArray);
+      algo.sortStr(sArray);
+      System.out.println("String sorted is: ");
+      algo.printStr(sArray);
+      
       
       //Prime Number
+      int n = 5;
+      boolean result12 = algo.isPrime(n);
+      System.out.println("Is the given number a prime number? " + result12);
       
+      n = 12;
+      result12 = algo.isPrime(n);
+      System.out.println("Is the given number a prime number? " + result12);
+      
+      n = 517;
+      result12 = algo.isPrime(n);
+      System.out.println("Is the given number a prime number? " + result12);
       
    }
 

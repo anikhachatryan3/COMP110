@@ -1,106 +1,166 @@
 //Name: Ani Khachatryan
-//Date: 10/20/2018
-//App: FacebookLite
-//Purpose:
+//Date:
 
 import java.util.Scanner;
 
-class FacebookLite {
-
-   private static Scanner sc;
-   private static Profile[] profiles;
-   private static int idx;  //index for profiles array
-   private static int nop;      //number of profiles
-   private static int opt;      //option
+public class FacebookLite {
    
-   public FacebookLite() {
+    private Scanner sc;
+    private Profile[] profiles;
+    private int idx; //index for profiles array
+    private int nop; //number of profiles
+    private int opt; //option
+    
+    public FacebookLite() {
+       
+        profiles = new Profile[5];
+        sc = new Scanner(System.in);
+        idx = -1;
+        nop = 0;
+       
+    }
+   
+    public void createProfile(String fname, String lname, int age) {
+       
+        if(idx < profiles.length - 1) {
+           
+            Profile p = new Profile(fname, lname, age);
+            idx++;
+            profiles[idx] = p;
+            nop++;
+            Util.print("Profile created!\n");
+           
+        }
+        else {
+           
+            Util.print("\nNo room to create a new profile\n");
+           
+        }
+       
+    }
+   
+   public void removeLastProfile() {
       
-      profiles = new Profile[5];
-      sc = new Scanner(System.in);
-      idx = -1;
-      nop = 0;
+      nop--;
+      idx--;
+      Util.print("\nProfile deleted.");
       
    }
    
-   public void createProfile(String f, String l, int a) {
+   public void swapProfiles(int profile1, int profile2) {
+      Profile temp = profiles[profile2];
+      profiles[profile2] = profiles[profile1];
+      profiles[profile1] = temp;
+   }
+   
+   public void switchProfiles() {
       
-      if(idx < profiles.length - 1) {
+      if(nop == 1) {
          
-         Profile profile = new Profile(f, l, a);
-         idx++;
-         profiles[idx] = profile;
-         nop++;
-         Util.print("New profile created.");
+         Util.print("\nPlease create another profile.\n");
          
       }
-      else {
-         Util.print("No room to create new profile.");
+      else if(nop == 2) {
+         swapProfiles(0, 1);
+         Util.print("\nProfile switched.\n");
+         
+      }
+      else if(nop >= 3) {
+         
+         Util.print("Which profile do you want to switch to? ex. 1, 2...");
+         opt = Integer.parseInt(sc.nextLine());
+           if(opt >= 1 && opt <= nop) {
+              swapProfiles(opt-1, nop-1);
+              Util.print("\nProfile switched.\n");
+              printProfile();
+           }
+           else {
+              Util.print("\nProfile does not exist.\n");
+           }
       }
       
    }
    
-   public static void main(String[] args) {
-      
-      FacebookLite fbl = new FacebookLite();
-      while(true) {
+   public void printProfile() {
+         (profiles[nop-1]).printProfile();
 
-         Util.print("Welcome to FacebookLite! Choose an option:\n0 - Exit\n1 - Create Profile\n2 - Delete Last Profile\n3 - switch Profile\n4 - Print Profile\n5 - Add Friend\n6 - Remove Last Friend\n7 - Remove All Friends\n8 - Add Post\n9 - Remove Last Post\n10 - Remove All Posts\n11 - Toggle Age\n12 - Toggle Friends\n13 - Toggle Posts\n14 - Change Status\n15 - Delete All Profiles");
-
-         fbl.opt = Integer.parseInt(sc.nextLine());
-         
-         switch(fbl.opt) {
-               
-            case 0: //exit
-               Util.print("Goodbye.");
-               return;
-            case 1: //create Profile
-               Util.print("Please enter your first name: ");
-               String fname = sc.nextLine();
-               Util.print("Please enter your last name: ");
-               String lname = sc.nextLine();
-               Util.print("Please enter your age: ");
-               int age = Integer.parseInt(sc.nextLine());
-               fbl.createProfile(fname, lname, age);
-               break;
-            case 2: //delete last Profile
-               if(fbl.nop == 0) {
-                  Util.print("Please create a profile first.");
-               }
-               else {
-                  fbl.removeLastProfile();
-               }
-               break;
-            /*case 3: //switch Profile
-               break;
-            case 4: //print Profile
-               break;
-            case 5: //add Friend
-               break;
-            case 6: //remove Last Friend
-               break;
-            case 7: //remove All Friends
-               break;
-            case 8: //add Post
-               break;
-            case 9: //remove Last Post
-               break;
-            case 10: //remove All Posts
-               break;
-            case 11: //toggle Age
-               break;
-            case 12: //toggle Friends
-               break;
-            case 13: //toggle Posts
-               break;
-            case 14: //change Status
-               break;
-            case 15: //delete All Profiles
-               break; */
-               
-         }
-         
-      }
-      
    }
-
+   
+   
+    public static void main(String[] args) {
+       
+        FacebookLite fbl = new FacebookLite();
+       
+        while(true) {
+           
+           Util.print("\nWelcome to Facebook Lite! Here is the menu:\n\n0 - Exit\n1 - Create Profile\n2 - Delete last Profile\n3 - Switch Profile\n4 - Print Profile\n5 - Add Friend\n6 - Remove last Friend\n7 - Remove all Friends\n8 - Add Post\n9 - Remove last Post\n10 - Remove all Posts\n11 - Toggle Age\n12 - Toggle Friends\n13 - Toggle Posts\n14 - Change Status\n15 - Delete all Profiles");
+           
+            fbl.opt = Integer.parseInt(fbl.sc.nextLine());
+            switch(fbl.opt) {
+                  
+                case 0: //exit
+                  Util.print("Goodbye");
+                  return;
+                case 1: //create profile
+                  Util.print("Please enter your first name");
+                  String fname = fbl.sc.nextLine();
+                  Util.print("Please enter your last name");
+                  String lname = fbl.sc.nextLine();
+                  Util.print("Please enter your age");
+                  int age = Integer.parseInt(fbl.sc.nextLine());
+                  fbl.createProfile(fname, lname, age);
+                  break;
+                case 2: //delete last profile
+                  if(fbl.nop == 0) {
+                     Util.print("\nPlease create a profile first.\n\n");
+                  }
+                  else {
+                     fbl.removeLastProfile();
+                  }
+                  break;
+                case 3:  //switch profiles
+                  if(fbl.nop == 0) {
+                     Util.print("\nPlease create a profile first.\n");
+                  }
+                  else {
+                     fbl.switchProfiles();
+                  }
+                  break;
+                case 4:  //print profile
+                  if(fbl.nop == 0) {
+                     Util.print("\nPlease create a profile.\n");
+                  }
+                  else {
+                    fbl.printProfile();
+                  }
+                  break;
+                case 5:  //add friend
+                  break;
+                case 6:  //remove last friend
+                  break;
+                case 7:  //remove all friends
+                  break;
+                case 8:  //add post
+                  break;
+                case 9:  //remove last post
+                  break;
+                case 10: //remove all posts
+                  break;
+                case 11: //toggle age
+                  break;
+                case 12: //toggle friends
+                  break;
+                case 13: //toggle posts
+                  break;
+                case 14: //change status
+                  break;
+                case 15: //delete all profiles
+                  break;
+                  
+            }
+           
+        }
+       
+    }
+   
 }

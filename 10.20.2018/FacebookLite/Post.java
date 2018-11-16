@@ -1,23 +1,26 @@
-//Name: Ani Khachatryan
-//Date: 11/03/2018
-//App: Post
-//Purpose:
-
-class Post implements IDisplayable {
-
-   private Stack posts;
-   private boolean isPostsVisible;
+public class Post implements IDisplayable {
+    private Stack posts;
+    private boolean isPostsVisible;
+    
+    public Post() {
+        posts = new Stack(5);
+    }
+    
+    public void display() {
+        Util.print("Posts: ");
+        if(posts.isEmpty()) {
+           Util.print("no posts.");
+        }
+        else {
+           posts.print();
+        }
+    }
+    
+    public void toggleVisibility() {
+        isPostsVisible = !isPostsVisible;
+    }
    
-   public Post() {
-      posts = new Stack(5);
-   }
-   
-   public void display() {
-      posts.print();
-   }
-   
-   public void toggleVisibility() {
-      isPostsVisible = !isPostsVisible;
-   }
-
+    public boolean isEmpty() {
+        return posts.isEmpty();
+    }
 }
