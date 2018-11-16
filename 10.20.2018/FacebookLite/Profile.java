@@ -1,32 +1,40 @@
 public class Profile {
    
-    private User u;
-    private Friend f;
-    private Post p;
+   private User u;
+   private Friend f;
+   private Post p;
     
-    public Profile(String fname, String lname, int age) {
+   public Profile(String fname, String lname, int age) {
        
-        u = new User(fname, lname, age);
-        f = new Friend();
-        p = new Post();
+      u = new User(fname, lname, age);
+      f = new Friend();
+      p = new Post();
        
-    }
+   }
    
-    public void printProfile() {
+   public void printProfile() {
        
-        u.display();
-        f.display();
-        p.display();
+      u.display();
+      f.display();
+      p.display();
        
-    }
+   }
    
-    public void setStatus(String status) {
-        u.setStatus(status);
-    }
+   public void setStatus(String status) {
+      u.setStatus(status);
+   }
    
-    public void togglePosts() {
-        p.toggleVisibility();
-    }
+   public void togglePosts() {
+      p.toggleVisibility();
+   }
+   
+   public void toggleAge() {
+      u.toggleVisibility();
+   }
+   
+   public void toggleFriends() {
+      f.toggleVisibility();
+   }
    
    public void addFriend(String name) {
       f.addFriend(name);

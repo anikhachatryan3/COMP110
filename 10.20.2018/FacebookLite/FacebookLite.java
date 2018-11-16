@@ -213,6 +213,45 @@ public class FacebookLite {
       
    }
    
+   //case 11
+   public void toggleAge() {
+      
+      profiles[idx].toggleAge();
+      Util.print("\nAge has been toggled!\n");
+      
+   }
+   
+   //case 12
+   public void toggleFriends() {
+      
+      if(profiles[idx].isFriendsEmpty() == false) {
+         
+         profiles[idx].toggleFriends();
+         Util.print("\nFriends list has been toggled!\n");
+         
+      }
+      else {
+         Util.print("\nPlease add friends to toggle friends.\n");
+      }
+      
+   }
+   
+   //case 13
+   public void togglePosts() {
+      
+      if(profiles[idx].isPostsEmpty() == false) {
+         
+         profiles[idx].togglePosts();
+         Util.print("\nPosts have been toggled!\n");
+         
+      }
+      else {
+         Util.print("\nPlease add a post to toggle posts.\n");
+      }
+      
+   }
+   
+   
    //case 14
    public void changeStatus() {
       
@@ -337,10 +376,28 @@ public class FacebookLite {
                      }
                      break;
                    case 11: //toggle age
+                     if(fbl.nop == 0) {
+                        Util.print("\nPlease create a profile to toggle age.\n");
+                     }
+                     else {
+                        fbl.toggleAge();
+                     }
                      break;
                    case 12: //toggle friends
+                     if(fbl.nop == 0) {
+                        Util.print("\nPlease create a profile and add friends to toggle friends.\n");
+                     }
+                     else {
+                        fbl.toggleFriends();
+                     }
                      break;
                    case 13: //toggle posts
+                     if(fbl.nop == 0) {
+                        Util.print("\nPlease create a profile and add posts to toggle posts.\n");
+                     }
+                     else {
+                        fbl.togglePosts();
+                     }
                      break;
                    case 14: //change status
                      if(fbl.nop > 0) {
