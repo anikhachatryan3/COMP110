@@ -52,6 +52,7 @@ public class FacebookLite {
       
    }
    
+   //case 3
    public void switchProfiles() {
       
       if(nop == 1) {
@@ -93,9 +94,23 @@ public class FacebookLite {
    }
    
    //case 5
-   public void addFriend() {
+   
+   
+   //case 14
+   public void changeStatus() {
       
+      Util.print("Update your status: ");
+      String status = sc.nextLine();
       
+      if(status.length() != 0) {
+         
+         profiles[idx].setStatus(status);
+         Util.print("\nStatus updated!\n");
+         
+      }
+      else {
+         Util.print("\nYou must enter a message to update your status.\n");
+      }
       
    }
    
@@ -158,7 +173,7 @@ public class FacebookLite {
                      }
                      break;
                    case 5:  //add friend
-                     fbl.addFriend();
+                     
                      break;
                    case 6:  //remove last friend
                      break;
@@ -177,6 +192,12 @@ public class FacebookLite {
                    case 13: //toggle posts
                      break;
                    case 14: //change status
+                     if(fbl.nop > 0) {
+                        fbl.changeStatus();
+                     }
+                     else {
+                        Util.print("\nPlease create a profile first.\n");
+                     }
                      break;
                    case 15: //delete all profiles
                      if(fbl.nop == 0) {

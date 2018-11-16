@@ -8,10 +8,11 @@ public class User extends Person implements IDisplayable {
         isAgeVisible = true;
     }
     public void display() {
-        System.out.println("Name: "+getFName()+" "+getLName());
+        System.out.println("Name: " + getFName() + " " + getLName());
         if(isAgeVisible) {
-            System.out.println("Age: "+getAge());
+            System.out.println("Age: " + getAge());
         }
+        System.out.println("Status: " + getStatus());
         
     }
     public void toggleVisibility() {
