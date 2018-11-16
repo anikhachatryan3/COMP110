@@ -4,6 +4,7 @@ public class Post implements IDisplayable {
     
     public Post() {
         posts = new Stack(5);
+        isPostsVisible = true;
     }
     
     public void display() {
