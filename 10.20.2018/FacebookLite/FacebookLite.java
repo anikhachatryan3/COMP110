@@ -27,9 +27,9 @@ public class FacebookLite {
         if(idx < profiles.length - 1) {
            
             Profile p = new Profile(fname, lname, age);
-            idx++;
-            profiles[idx] = p;
             nop++;
+            idx = nop - 1;
+            profiles[idx] = p;
             Util.print("Profile created!\n");
            
         }
@@ -45,16 +45,11 @@ public class FacebookLite {
    public void removeLastProfile() {
       profiles[nop-1] = null;
       nop--;
-      idx--;
+      if(idx == nop){
+         idx--;
+      }
       Util.print("\nProfile deleted.");
       
-   }
-   
-   //case 3
-   public void swapProfiles(int profile1, int profile2) {
-      Profile temp = profiles[profile2];
-      profiles[profile2] = profiles[profile1];
-      profiles[profile1] = temp;
    }
    
    public void switchProfiles() {
@@ -65,7 +60,13 @@ public class FacebookLite {
          
       }
       else if(nop == 2) {
-         swapProfiles(0, 1);
+         
+         if(idx == 0) {
+            idx = 1;
+         }
+         else {
+            idx = 0;
+         }
          Util.print("\nProfile switched.\n");
          
       }
@@ -74,7 +75,7 @@ public class FacebookLite {
          Util.print("Which profile do you want to switch to? ex. 1, 2...");
          opt = Integer.parseInt(sc.nextLine());
            if(opt >= 1 && opt <= nop) {
-              swapProfiles(opt-1, nop-1);
+              idx = opt - 1;
               Util.print("\nProfile switched.\n");
               printProfile();
            }
@@ -87,7 +88,7 @@ public class FacebookLite {
    
    //case 4
    public void printProfile() {
-         (profiles[nop-1]).printProfile();
+         (profiles[idx]).printProfile();
 
    }
    
