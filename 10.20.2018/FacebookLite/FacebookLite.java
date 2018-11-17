@@ -223,31 +223,17 @@ public class FacebookLite {
    
    //case 12
    public void toggleFriends() {
-      
-      if(profiles[idx].isFriendsEmpty() == false) {
          
          profiles[idx].toggleFriends();
          Util.print("\nFriends list has been toggled!\n");
-         
-      }
-      else {
-         Util.print("\nPlease add friends to toggle friends.\n");
-      }
       
    }
    
    //case 13
    public void togglePosts() {
-      
-      if(profiles[idx].isPostsEmpty() == false) {
          
          profiles[idx].togglePosts();
          Util.print("\nPosts have been toggled!\n");
-         
-      }
-      else {
-         Util.print("\nPlease add a post to toggle posts.\n");
-      }
       
    }
    
