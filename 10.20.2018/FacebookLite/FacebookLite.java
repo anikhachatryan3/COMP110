@@ -78,7 +78,9 @@ public class FacebookLite {
       }
       else if(nop >= 3) {
          
-         Util.print("Which profile do you want to switch to? ex. 1, 2...");
+         Util.print("Which profile do you want to switch to?");
+         printProfiles();
+         try {
          opt = Integer.parseInt(sc.nextLine());
            if(opt >= 1 && opt <= nop) {
               
@@ -90,6 +92,21 @@ public class FacebookLite {
            else {
               Util.print("\nProfile does not exist.\n");
            }
+         
+         }
+         catch(NumberFormatException nfe) {
+            Util.print("\nNot a valid option.\n");
+         }
+      }
+      
+   }
+   
+   public void printProfiles() {
+      
+      for(int i = 0; i < nop; i++) {
+         
+         Util.print((i + 1) + " - " + profiles[i].getFullName());
+         
       }
       
    }
@@ -109,7 +126,7 @@ public class FacebookLite {
          Util.print("\nEnter the name of the person you want to add: ");
          String name = sc.nextLine();
          
-         if(name.length() != 0) {
+         if(name.length() > 0) {
             
             profiles[idx].addFriend(name);
             Util.print("\nFriend added!\n");
@@ -166,7 +183,7 @@ public class FacebookLite {
          Util.print("What would you like to post? ");
          String post = sc.nextLine();
          
-         if(post.length() != 0) {
+         if(post.length() > 0) {
             
             profiles[idx].addPost(post);
             Util.print("\nYour post has been posted!\n");
@@ -244,7 +261,7 @@ public class FacebookLite {
       Util.print("Update your status: ");
       String status = sc.nextLine();
       
-      if(status.length() != 0) {
+      if(status.length() > 0) {
          
          profiles[idx].setStatus(status);
          Util.print("\nStatus updated!\n");
@@ -279,16 +296,31 @@ public class FacebookLite {
                switch(fbl.opt) {
                      
                    case 0: //exit
-                     Util.print("Goodbye");
+                     Util.print("\nGoodbye.\n");
                      return;
                    case 1: //create profile
                      Util.print("Please enter your first name");
                      String fname = fbl.sc.nextLine();
-                     Util.print("Please enter your last name");
-                     String lname = fbl.sc.nextLine();
-                     Util.print("Please enter your age");
-                     int age = Integer.parseInt(fbl.sc.nextLine());
-                     fbl.createProfile(fname, lname, age);
+                     if(fname.length() > 0) {
+                        Util.print("Please enter your last name");
+                        String lname = fbl.sc.nextLine();
+                        if(lname.length() > 0) {
+                           Util.print("Please enter your age");
+                           try {
+                              int age = Integer.parseInt(fbl.sc.nextLine());
+                              fbl.createProfile(fname, lname, age);
+                           }
+                           catch(NumberFormatException nfe) {
+                              Util.print("\nNot a valid age.\n");
+                           }
+                        }
+                        else {
+                           Util.print("\nLast name cannot be blank.\n");
+                        }
+                     }
+                     else {
+                        Util.print("\nFirst name cannot be blank.\n");
+                     }
                      break;
                    case 2: //delete last profile
                      if(fbl.nop == 0) {
@@ -402,12 +434,15 @@ public class FacebookLite {
                      }
                      break;
                   default:
-                     System.out.println("Please enter a valid option.");
+                     System.out.println("\nPlease enter a valid option.\n");
                      break;
+                     
                }
             }
-            catch(NumberFormatException e) {
-               System.out.println("Please enter a valid option.");
+            catch(NumberFormatException nfe) {
+               
+               System.out.println("\nPlease enter a valid option.\n");
+               
             }
            
         }

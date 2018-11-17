@@ -20,6 +20,10 @@ public class Profile {
        
    }
    
+   public String getFullName() {
+      return u.getFullName();
+   }
+   
    public void setStatus(String status) {
       u.setStatus(status);
    }
