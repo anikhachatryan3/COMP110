@@ -16,21 +16,26 @@ public abstract class Person {
     public String getLName() {
         return lname;
     }
+   
     public String getFName() {
         return fname;
     }
-   public int getAge() {
-      return age;
-   }
+   
+    public int getAge() {
+       return age;
+    }
     
     //setters
     public void setAge(int age) {
         this.age = age;
     }
+   
     public void setFName(String fname) {
         this.fname = fname;
     }
+   
     public void setLName(String lname) {
         this.lname = lname;
     }
+   
 }

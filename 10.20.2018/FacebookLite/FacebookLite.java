@@ -403,7 +403,7 @@ public class FacebookLite {
                      break;
                    case 12: //toggle friends
                      if(fbl.nop == 0) {
-                        Util.print("\nPlease create a profile and add friends to toggle friends.\n");
+                        Util.print("\nPlease create a profile to toggle friends.\n");
                      }
                      else {
                         fbl.toggleFriends();
@@ -411,7 +411,7 @@ public class FacebookLite {
                      break;
                    case 13: //toggle posts
                      if(fbl.nop == 0) {
-                        Util.print("\nPlease create a profile and add posts to toggle posts.\n");
+                        Util.print("\nPlease create a profile to toggle posts.\n");
                      }
                      else {
                         fbl.togglePosts();

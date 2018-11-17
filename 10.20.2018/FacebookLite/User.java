@@ -5,7 +5,7 @@ public class User extends Person implements IDisplayable {
     
     public User(String fname, String lname, int age) {
        
-        super(fname,lname,age);
+        super(fname, lname, age);
         status = "What are you doing today?";
         isAgeVisible = true;
        
