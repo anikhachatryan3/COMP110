@@ -1,6 +1,9 @@
 //Name: Ani Khachatryan
 //Date:
 
+//POSTS FULL BREAKS!
+//CHECK FRIENDS AND PROFILES!
+
 import java.util.Scanner;
 import java.lang.NumberFormatException;
 
