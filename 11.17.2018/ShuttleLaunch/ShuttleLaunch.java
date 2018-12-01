@@ -21,7 +21,26 @@ class ShuttleLaunch {
             System.out.println("InterruptedException!");
          }
          
-         for(int i = 0; i < ) {
+      }
+      
+      for(int j = 10; j >= 0; j--) {
+         
+         try {
+            
+            System.out.println("T - " + j);
+            Thread.sleep(SLEEP_TIME_MILLISECONDS);
+            if(j < 3 && j > 1) {
+               System.out.println("Ignition...");
+               Thread.sleep(SLEEP_TIME_MILLISECONDS);
+            }
+            if(j == 0) {
+               System.out.println("We have a liftoff!");
+            }
+            
+         }
+         catch(InterruptedException e) {
+            
+            System.out.println("Interrupted.");
             
          }
          
