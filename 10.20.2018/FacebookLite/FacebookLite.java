@@ -151,7 +151,6 @@ public class FacebookLite {
    public void removeLastFriend() {
       
       if(profiles[idx].isFriendsEmpty() == false) {
-         
          profiles[idx].removeLastFriend();
          Util.print("\nFriend removed.\n");
          

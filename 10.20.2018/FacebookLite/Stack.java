@@ -1,5 +1,5 @@
 public class Stack {
-   
+    private int count = 0;
     private int size;
     private int top; //master index for our array
     private String[] stack;
@@ -32,24 +32,25 @@ public class Stack {
            
         }
         else {
-           
-            stack[++top] = item;
+            top++;
+            stack[top] = item;
+            count++;
            
         }
        
     }
    
     public String pop() {
-       
         if(isEmpty()) {
-           
+
             Util.print("The stack is empty");
             return "";
            
         }
         else {
-           
-            return stack[top--];
+            count--;
+            top--;
+            return stack[top];
            
         }
        
@@ -63,13 +64,14 @@ public class Stack {
            
         }
         top = -1;
+        count = 0;
        
     }
    
     public void print() {
        
         int i = 0;
-        while(stack[i] != null) {
+        while(i < count) {
            
             Util.print(stack[i]);
             i++;

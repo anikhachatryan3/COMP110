@@ -22,6 +22,7 @@ public class Friend implements IDisplayable {
                
             }
             else {
+               
                friends.print();
             }
            
