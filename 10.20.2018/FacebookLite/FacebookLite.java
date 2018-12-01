@@ -310,7 +310,12 @@ public class FacebookLite {
                            Util.print("Please enter your age");
                            try {
                               int age = Integer.parseInt(fbl.sc.nextLine());
+                              if(age >= 12) {
                               fbl.createProfile(fname, lname, age);
+                              }
+                              else {
+                                 Util.print("\nMust be at least 12 years old to create a profile.\n");
+                              }
                            }
                            catch(NumberFormatException nfe) {
                               Util.print("\nNot a valid age.\n");

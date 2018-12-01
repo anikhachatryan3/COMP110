@@ -24,7 +24,7 @@ class Queue {
       
       if(rear == MAX_SIZE - 1) {
          
-         ;
+         System.out.println("The queue is full.");
          
       }
       else {
