@@ -35,6 +35,7 @@ class ShuttleLaunch {
             }
             if(j == 0) {
                System.out.println("We have a liftoff!");
+               Thread.sleep(SLEEP_TIME_MILLISECONDS);
             }
             
          }
