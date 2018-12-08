@@ -20,6 +20,18 @@ public class Profile {
        
    }
    
+   public User getUser() {
+      return u;
+   }
+   
+   public Friend getFriend() {
+      return f;
+   }
+   
+   public Post getPost() {
+      return p;
+   }
+   
    public String getFullName() {
       return u.getFullName();
    }

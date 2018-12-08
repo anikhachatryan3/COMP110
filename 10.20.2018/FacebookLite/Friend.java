@@ -54,4 +54,8 @@ public class Friend implements IDisplayable {
       return friends.isFull();
    }
    
+   public Stack getFriends() {
+      return friends;
+   }
+   
 }

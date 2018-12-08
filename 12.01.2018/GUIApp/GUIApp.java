@@ -61,6 +61,7 @@ public class GUIApp {
    private JMenu helpMenu;
    private JMenuItem exitItem;
    private JMenuItem aboutItem;
+   private JTree tree;
    
    //constructor
    public GUIApp() {
@@ -75,106 +76,40 @@ public class GUIApp {
       
       setLookAndFeel();
       buildDesktop();
+      buildTree();
+      addTreeListeners();
       buildMenu();
       addMenuListeners();
       buildPanel();
       buildFrame();
       
-      try {
-         
-         UIManager.setLookAndFeel(
-            UIManager.getCrossPlatformLookAndFeelClassName()
-         );
-         
-      }
-      catch(Exception e) {
-         
-         e.printStackTrace();
-         
-      }
-      
-      //create a new frame and give it a title
-//      frame.setDefaultLookAndFeelDecorated(true);
-//      frame = new JFrame("My GUI Application");
-//      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//      frame.setLayout(new BorderLayout());
-      
-      desktop = new JDesktopPane();
-//      panel = new JPanel();
+//      try {
+//
+//         UIManager.setLookAndFeel(
+//            UIManager.getCrossPlatformLookAndFeelClassName()
+//         );
+//
+//      }
+//      catch(Exception e) {
+//
+//         e.printStackTrace();
+//
+//      }
+//
+//      desktop = new JDesktopPane();
+//
+//      //set border, size, and layout
+//      labelPanel.setLayout(new BorderLayout());
+//
+//      //add a label to the GUI
+//      JLabel label = new JLabel("Hey, this is my first GUI app!");
+//      frame.getContentPane().add(label);
+//
+//      //setup the panel
 //      splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-//      scrollPane = new JScrollPane();
-//      labelPanel = new JPanel();
-//      statusLabel = new JLabel();
-      
-      //set border, size, and layout
-      labelPanel.setLayout(new BorderLayout());
-      
-//      statusLabel.setBorder(BorderFactory.createLoweredBevelBorder());
-//      statusLabel.setMinimumSize(new Dimension(0, 18));
-//      statusLabel.setPreferredSize(new Dimension(0, 18));
-      
-      //add a label to the GUI
-      JLabel label = new JLabel("Hey, this is my first GUI app!");
-      frame.getContentPane().add(label);
-      
-//      //build menu
-//      JMenuBar menuBar = new JMenuBar();
-//      JMenu fileMenu = new JMenu("File");
-//      JMenu helpMenu = new JMenu("Help");
-//      JMenuItem exitItem = new JMenuItem("Exit");
-//      JMenuItem aboutItem = new JMenuItem("About");
-//      fileMenu.add(exitItem);
-//      helpMenu.add(aboutItem);
-//      menuBar.add(fileMenu);
-//      menuBar.add(helpMenu);
-      
-      //setup the panel
-//      panel.setLayout(new BorderLayout());
-      splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-//      splitPane.setOneTouchExpandable(true);
-//      splitPane.setDividerLocation(200);
-//      splitPane.setContinuousLayout(true);
 //
-//      splitPane.add(desktop, JSplitPane.RIGHT);
-//      splitPane.add(scrollPane, JSplitPane.LEFT);
-      
-      panel.add(splitPane, BorderLayout.CENTER);
-      labelPanel.add(statusLabel, BorderLayout.CENTER);
-      
-      //setup and show frame
-//      frame.getContentPane().add(labelPanel, BorderLayout.SOUTH);
-//      frame.getContentPane().add(panel, BorderLayout.CENTER);
-      
-      //show GUI
-//      frame.setSize(1280, 800);
-//      frame.setJMenuBar(menuBar);
-//      frame.setVisible(true);
-      
-      //add listeners to exit menu item
-//      exitItem.addActionListener(
-//
-//         new java.awt.event.ActionListener() {
-//
-//            public void actionPerformed(ActionEvent e) {
-//               exitActionPerformed();
-//            }
-//
-//         }
-//
-//      );
-//
-//      //add listeners to about menu item
-//      aboutItem.addActionListener(
-//
-//         new java.awt.event.ActionListener() {
-//
-//            public void actionPerformed(ActionEvent e) {
-//               aboutActionPerformed();
-//            }
-//
-//         }
-//
-//      );
+//      panel.add(splitPane, BorderLayout.CENTER);
+//      labelPanel.add(statusLabel, BorderLayout.CENTER);
 
    } //end of initComponents
    
@@ -195,18 +130,127 @@ public class GUIApp {
    
    private void buildDesktop() {
       
-      desktop = new JDesktopPane();
+      desktop = new JDesktopPane()
+      {
+         
+         @Override
+         protected void paintComponent(Graphics g)
+         {
+            
+            ImageIcon icon = new ImageIcon("images/csun_logo.png");
+            Image image = icon.getImage();
+            
+            int x = 0, y = 0;
+            double imageWidth = image.getWidth(null);
+            double imageHeight = image.getHeight(null);
+            double screenWidth = getWidth();
+            double screenHeight = getHeight();
+            
+            if(screenWidth != 0) {
+               
+               x = (int)screenWidth/2 - (int)imageWidth/2;
+               
+            }
+            if(screenHeight != 0) {
+               
+               y = (int)screenHeight/2 - (int)imageHeight/2;
+               
+            }
+            g.drawImage(image, x, y, this);
+            
+         }
+         
+      };
       
-   }
+   } //end buildDesktop
+   
+   private void buildTree() {
+      
+      //create data for the tree
+      DefaultMutableTreeNode root = new DefaultMutableTreeNode("Tools");
+      DefaultMutableTreeNode alg = new DefaultMutableTreeNode("Algorithms");
+      DefaultMutableTreeNode odd = new DefaultMutableTreeNode("Odd");
+      DefaultMutableTreeNode io = new DefaultMutableTreeNode("IO");
+      DefaultMutableTreeNode fileInfo = new DefaultMutableTreeNode("File Info");
+      
+      alg.add(odd);
+      io.add(fileInfo);
+      
+      //create a new tree
+      DefaultTreeModel treeModel = new DefaultTreeModel(root);
+      tree = new JTree(treeModel);
+      
+   } //end of buildTree
+   
+   private void addTreeListeners() {
+      
+      tree.addMouseListener(
+      
+         new MouseAdapter() {
+         
+            @Override
+            public void mousePressed(MouseEvent e) {
+            
+               int selRow = tree.getRowForLocation(e.getX(), e.getY());
+               if(selRow != -1) {
+                  
+                  treeClicked();
+                  
+               }
+               
+            }
+         
+         }
+      
+      );
+      
+   } //end addTreeListeners
+   
+   private void treeClicked() {
+      
+      //get the last selected tree node
+      DefaultMutableTreeNode node = (DefaultMutableTreeNode)
+      tree.getLastSelectedPathComponent();
+      
+      //if the node is a leaf (no children, keep going)
+      if(node != null && node.isLeaf()) {
+         
+         statusLabel.setText(node.toString() + " clicked.");
+         
+         if(node.toString().equals("Odd")) {
+            
+            OddDialog od = OddDialog.getInstance();
+            if(!od.isVisible()) {
+
+               od.setVisible(true);
+               desktop.add(od);
+
+            }
+         }
+         else if(node.toString().equals("File Info")) {
+            
+            ReadDialog rd = ReadDialog.getInstance();
+            if(!rd.isVisible()) {
+
+               rd.setVisible(true);
+               desktop.add(rd);
+
+            }
+            
+         }
+         
+      } //end of isLeaf
+      
+   } //end of treeClicked
    
    private void buildMenu() {
       
       //build menu
-      JMenuBar menuBar = new JMenuBar();
-      JMenu fileMenu = new JMenu("File");
-      JMenu helpMenu = new JMenu("Help");
-      JMenuItem exitItem = new JMenuItem("Exit");
-      JMenuItem aboutItem = new JMenuItem("About");
+      menuBar = new JMenuBar();
+      fileMenu = new JMenu("File");
+      helpMenu = new JMenu("Help");
+      exitItem = new JMenuItem("Exit");
+      aboutItem = new JMenuItem("About");
       fileMenu.add(exitItem);
       helpMenu.add(aboutItem);
       menuBar.add(fileMenu);
@@ -262,6 +306,8 @@ public class GUIApp {
       scrollPane = new JScrollPane();
       labelPanel = new JPanel();
       statusLabel = new JLabel();
+      
+      scrollPane.getViewport().add(tree);
       
       statusLabel.setBorder(BorderFactory.createLoweredBevelBorder());
       statusLabel.setMinimumSize(new Dimension(0, 18));

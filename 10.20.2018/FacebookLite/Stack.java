@@ -80,4 +80,12 @@ public class Stack {
        
     }
    
+   public String[] getAllFriends() {
+      return stack;
+   }
+   
+   public String[] getAllPosts() {
+      return stack;
+   }
+   
 }

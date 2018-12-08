@@ -1,10 +1,10 @@
 //Name: Ani Khachatryan
 //Date:
 
-//POSTS FULL BREAKS!
-//CHECK FRIENDS AND PROFILES!
-
 import java.util.Scanner;
+import java.io.PrintStream;
+import java.io.File;
+import java.io.IOException;
 import java.lang.NumberFormatException;
 
 public class FacebookLite {
@@ -21,7 +21,7 @@ public class FacebookLite {
         sc = new Scanner(System.in);
         idx = -1;
         nop = 0;
-       
+//        loadProfiles();
     }
    
    //case 1
@@ -285,10 +285,99 @@ public class FacebookLite {
       
    }
    
+   //saveProfile
+   public void saveProfiles() {
+
+         try {
+
+            PrintStream writer = new PrintStream(new File("profile.txt"));
+            for(int i = 0; i < nop; i++) {
+               
+               writer.print("//INFO//\n" + profiles[i].getUser().getFName() + ";;" + profiles[i].getUser().getLName() + ";;" + profiles[i].getUser().getAge() + "\n");
+               writer.print("//STATUS//\n" + profiles[i].getUser().getStatus() + "\n");
+               writer.print("//FRIENDS//\n");
+               String[] friends = profiles[i].getFriend().getFriends().getAllFriends();
+               for( int j = 0; j < friends.length; j++ ){
+                  if( friends[i] != null ){
+                     writer.print(friends[j] + "\n");
+                  }
+               }
+               writer.print("//POSTS//\n");
+               String[] posts = profiles[i].getPost().getPosts().getAllPosts();
+               for( int k = 0; k < posts.length; k++ ){
+                  if( posts[i] != null ){
+                     writer.print(posts[k] + "\n");
+                  }
+               }
+               
+               writer.flush();
+               
+            }
+            
+         }
+         catch(IOException e) {
+            
+            Util.print("Error writing file.");
+            
+         }
+
+   }
+   
+   //loadProfile
+   public void loadProfiles() {
+      try {
+         Scanner scan = new Scanner(new File("profile.txt"));
+         String line = "";
+         while(scan.hasNextLine()) {
+            if(!line.equals("//INFO//")){
+               line = scan.nextLine();
+            }
+            if(line.equals("//INFO//")) {
+               String[] info = scan.nextLine().split(";;");
+               Profile p = new Profile(info[0], info[1], Integer.parseInt(info[2]));
+               String status = scan.nextLine();
+               status = scan.nextLine();
+               if(status != "//FRIENDS//") {
+                  // status
+                  p.setStatus(status);
+               }
+               // friends
+               String friend;
+               if(status == "//FRIENDS//") {
+                  friend = status;
+               } else {
+                  friend = scan.nextLine();
+               }
+               while(scan.hasNextLine() && !friend.equals("//POSTS//")){
+                  friend = scan.nextLine();
+                  p.addFriend(friend);
+               }
+               String post = "//POSTS//";
+               while(scan.hasNextLine() && !post.equals("//INFO//")){
+                  post = scan.nextLine();
+                  p.addPost(post);
+               }
+               if( post.equals("//INFO//")){
+                  line = post;
+               }
+               nop++;
+               idx = nop - 1;
+               profiles[idx] = p;
+            }
+         }
+      }
+      catch(IOException e) {
+         
+         Util.print("Error reading file.");
+         
+      }
+
+   }
    
     public static void main(String[] args) {
        
         FacebookLite fbl = new FacebookLite();
+        fbl.loadProfiles();
        
         while(true) {
            
@@ -298,6 +387,7 @@ public class FacebookLite {
                switch(fbl.opt) {
                      
                    case 0: //exit
+//                     fbl.saveProfiles();
                      Util.print("\nGoodbye.\n");
                      return;
                    case 1: //create profile

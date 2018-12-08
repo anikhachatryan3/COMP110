@@ -1,0 +1,20 @@
+//INFO//
+ani;;khachatrya;;19
+//STATUS//
+Hello
+//FRIENDS//
+armine
+Lucian
+arsen
+//POSTS//
+idk
+//INFO//
+armine;;khachatryan;;19
+//STATUS//
+Yellow
+//FRIENDS//
+Ani
+Lucian
+arsen
+//POSTS//
+idk sis

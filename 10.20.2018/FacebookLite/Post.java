@@ -55,4 +55,8 @@ public class Post implements IDisplayable {
       posts.reset();
    }
    
+   public Stack getPosts() {
+      return posts;
+   }
+   
 }
