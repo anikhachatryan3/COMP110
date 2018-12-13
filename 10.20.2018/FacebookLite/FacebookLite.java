@@ -298,14 +298,15 @@ public class FacebookLite {
                writer.print("//FRIENDS//\n");
                String[] friends = profiles[i].getFriend().getFriends().getAllFriends();
                for( int j = 0; j < friends.length; j++ ){
-                  if( friends[i] != null ){
+//                     if(friends[j].compareTo("null") == 0){
+//                        removeLastProfile();
+//                     }
                      writer.print(friends[j] + "\n");
                   }
-               }
                writer.print("//POSTS//\n");
                String[] posts = profiles[i].getPost().getPosts().getAllPosts();
                for( int k = 0; k < posts.length; k++ ){
-                  if( posts[i] != null ){
+                  if( posts.length != 0 ){
                      writer.print(posts[k] + "\n");
                   }
                }
@@ -313,6 +314,7 @@ public class FacebookLite {
                writer.flush();
                
             }
+            writer.flush();
             
          }
          catch(IOException e) {
@@ -329,6 +331,7 @@ public class FacebookLite {
          Scanner scan = new Scanner(new File("profile.txt"));
          String line = "";
          while(scan.hasNextLine()) {
+ //           System.out.println(scan.nextLine());
             if(!line.equals("//INFO//")){
                line = scan.nextLine();
             }
@@ -387,7 +390,7 @@ public class FacebookLite {
                switch(fbl.opt) {
                      
                    case 0: //exit
-//                     fbl.saveProfiles();
+                     fbl.saveProfiles();
                      Util.print("\nGoodbye.\n");
                      return;
                    case 1: //create profile
